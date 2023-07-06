@@ -1,5 +1,83 @@
-template-repository (1.0-1) unstable; urgency=medium
+sitemesh (2.4.1+dfsg-7) unstable; urgency=medium
 
-  * Initial release
+  * Team upload.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+  [ Miguel Landaeta ]
+  * Remove myself from uploaders list. (Closes: #871886)
+  * Fix typo in Vcs-Browser field.
+  * Wrap and sort dependencies lists.
+  * Update copyright info.
+
+  [ Emmanuel Bourg ]
+  * Fixed the build failure with Java 11 (Closes: #911181)
+  * Standards-Version updated to 4.2.1
+  * Switch to debhelper level 11
+  * Use salsa.debian.org Vcs-* URLs
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Wed, 17 Oct 2018 16:45:27 +0200
+
+sitemesh (2.4.1+dfsg-6) unstable; urgency=medium
+
+  * Team upload.
+  * Fixed the compatibility with jflex 1.6 (Closes: #832809)
+  * Run the tests during the test phase instead of the build phase
+  * Simplified the get-orig-source target in debian/rules
+  * Standards-Version updated to 3.9.8
+  * Use secure Vcs-* URLs
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Fri, 29 Jul 2016 09:34:47 +0200
+
+sitemesh (2.4.1+dfsg-5) unstable; urgency=medium
+
+  * Team upload.
+  * Set file.encoding to UTF8 during build. (Closes: #792838)
+
+ -- tony mancill <tmancill@debian.org>  Sun, 20 Sep 2015 22:12:04 -0700
+
+sitemesh (2.4.1+dfsg-4) unstable; urgency=medium
+
+  * Transition to the Servlet API 3.1
+  * debian/control:
+    - Removed the explicit dependency on libservlet3.0-java for libsitemesh-java
+    - Updated Standards-Version to 3.9.6 (no changes)
+  * Removed the duplicate changelog in libsitemesh-java-doc
+  * Switch to debhelper level 9
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Tue, 31 Mar 2015 14:38:55 +0200
+
+sitemesh (2.4.1+dfsg-3) unstable; urgency=low
+
+  * Transition to the Servlet API 3.0
+  * debian/control:
+    - Moved velocity and freemarker to suggested dependencies
+      for libsitemesh-java
+    - Removed the suggested dependency on junit for libsitemesh-java
+    - Updated the URL of the homepage
+    - Updated Standards-Version to 3.9.4 (no changes)
+    - Use canonical URLs for the Vcs-* fields
+  * debian/copyright: Updated the Format URI
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Sun, 16 Jun 2013 00:33:04 +0200
+
+sitemesh (2.4.1+dfsg-2) unstable; urgency=low
+
+  The "let's fix all my newbie mistakes" release.
+
+  * Fix FTBFS caused by API changes in Velocity Tools 2.0. (Closes: #625764).
+  * Bump Standards-Version to 3.9.2. No changes were required.
+  * Rename Servlet compatibility patch filename for clarity's sake.
+  * Replace dependencies on libservlet2.4-java with libservlet2.5-java.
+  * Wrap dependencies list correctly.
+  * Remove unneeded dependencies on JREs.
+  * Remove redundant fields in control file.
+  * Remove typo in Vcs-Git field.
+  * Fix javadocs generation and add links to system javadoc.
+  * Update copyright dates and make it DEP-5 compliant.
+
+ -- Miguel Landaeta <miguel@miguel.cc>  Tue, 10 May 2011 11:00:00 +0200
+
+sitemesh (2.4.1+dfsg-1) unstable; urgency=low
+
+  * Initial release (closes: #466809).
+
+ -- Miguel Landaeta <miguel@miguel.cc>  Sat, 20 Feb 2010 22:57:13 -0430

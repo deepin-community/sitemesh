@@ -1,0 +1,45 @@
+Description: Implement the missing methods required to build against the Servlet API 3.1
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: no
+--- a/src/java/com/opensymphony/module/sitemesh/filter/RoutableServletOutputStream.java
++++ b/src/java/com/opensymphony/module/sitemesh/filter/RoutableServletOutputStream.java
+@@ -121,4 +121,24 @@
+     public void flush() throws IOException {
+         getDestination().flush();
+     }
++
++    public void setWriteListener(javax.servlet.WriteListener listener) {
++        try {
++            getDestination();
++        } catch (IOException e) {
++            throw new RuntimeException("Failed to initialize the destination", e);
++        }
++
++        destination.setWriteListener(listener);
++    }
++
++    public boolean isReady() {
++        try {
++            getDestination();
++        } catch (IOException e) {
++            throw new RuntimeException("Failed to initialize the destination", e);
++        }
++
++        return destination.isReady();
++    }
+ }
+--- a/src/java/com/opensymphony/module/sitemesh/filter/Buffer.java
++++ b/src/java/com/opensymphony/module/sitemesh/filter/Buffer.java
+@@ -70,6 +70,12 @@
+                 public void write(int b) {
+                     bufferedStream.write(b);
+                 }
++
++                public void setWriteListener(javax.servlet.WriteListener listener) {}
++
++                public boolean isReady() {
++                    return true;
++                }
+             };
+         }
+         return exposedStream;

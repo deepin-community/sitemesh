@@ -1,15 +1,49 @@
-Source: template-repository
-Section: unknown
+Source: sitemesh
+Section: java
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Emmanuel Bourg <ebourg@apache.org>
+Build-Depends:
+ ant,
+ ant-optional,
+ debhelper (>= 11),
+ default-jdk,
+ default-jdk-doc,
+ javahelper,
+ jflex (>= 1.6),
+ junit,
+ libfreemarker-java,
+ libservlet3.1-java,
+ libvelocity-tools-java,
+ velocity
+Standards-Version: 4.2.1
+Vcs-Git: https://salsa.debian.org/java-team/sitemesh.git
+Vcs-Browser: https://salsa.debian.org/java-team/sitemesh
+Homepage: http://www.sitemesh.org
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: libsitemesh-java
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: libfreemarker-java,
+          libvelocity-tools-java,
+          velocity
+Description: web-page layout and decoration framework
+ SiteMesh is framework that aids in creating large sites consisting of
+ many web pages and applications for which a consistent look/feel,
+ navigation and layout scheme is required.
+ .
+ SiteMesh is built with Java servlet, JSP and XML technologies. This
+ makes it ideal for use with Java EE applications, however it can be
+ integrated with server-side web architectures that are not Java
+ based.
+
+Package: libsitemesh-java-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Suggests: default-jdk-doc,
+          libsitemesh-java (= ${binary:Version})
+Description: documentation for libsitemesh-java
+ Documentation for SiteMesh which is a framework that aids in creating
+ large sites consisting of many web pages and applications for which a
+ consistent look/feel, navigation and layout scheme is required.

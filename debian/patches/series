@@ -1,0 +1,10 @@
+disable_tapestry.diff
+build_with_debian_jars.diff
+update_lexer.diff
+add_classpath_to_manifest.diff
+disable_network.diff
+add_compatability_with_servlet_2.4.diff
+625764.diff
+link_javadocs_to_system.diff
+add_compatability_with_servlet_3.1.diff
+java11-compatibility.patch

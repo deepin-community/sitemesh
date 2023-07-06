@@ -1,0 +1,11 @@
+dist/docs/*.html           usr/share/doc/libsitemesh-java/html
+dist/docs/README.txt       usr/share/doc/libsitemesh-java
+dist/docs/api              usr/share/doc/libsitemesh-java
+dist/docs/cache.jsp.txt    usr/share/doc/libsitemesh-java/html
+dist/docs/dtd              usr/share/doc/libsitemesh-java/html
+dist/docs/images           usr/share/doc/libsitemesh-java/html
+dist/docs/meta.xml         usr/share/doc/libsitemesh-java/html
+dist/docs/navpanel.jsp     usr/share/doc/libsitemesh-java/html
+dist/docs/style.jsp.txt    usr/share/doc/libsitemesh-java/html
+dist/sitemesh-blank.war    usr/share/doc/libsitemesh-java/examples
+dist/sitemesh-example.war  usr/share/doc/libsitemesh-java/examples

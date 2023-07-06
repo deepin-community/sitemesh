@@ -1,0 +1,22 @@
+Description: Compatibility with JFlex 1.6.x
+Author: Miguel Landaeta <miguel@miguel.cc>
+Forwarded: no
+--- a/src/java/com/opensymphony/module/sitemesh/html/tokenizer/lexer.flex
++++ b/src/java/com/opensymphony/module/sitemesh/html/tokenizer/lexer.flex
+@@ -21,15 +21,13 @@
+ //%line
+ //%column
+ 
+-// Profiling showed that this mode was slightly faster than %pack or %table.
+-%switch
+ // Profiling showed this as an optimal size buffer that was often filled but rarely exceeded.
+ %buffer 2048
+ 
+ %{
+     // Additional methods to add to generated Lexer to aid in error reporting.
+     protected int position() { return yychar; }
+-    protected int length()   { return yy_markedPos - yy_startRead; }
++    protected int length()   { return zzMarkedPos - zzStartRead; }
+     protected int line()     { return -1; /*yyline;*/ }   // useful for debugging, but adds overhead
+     protected int column()   { return -1; /*yycolumn;*/ } // useful for debugging, but adds overhead
+     protected void resetLexerState() { yybegin(YYINITIAL); }

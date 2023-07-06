@@ -1,0 +1,20 @@
+Description: Compatibility with Servlet 2.4
+Author: Miguel Landaeta <miguel@miguel.cc>
+Forwarded: no
+Last-Update: 2011-05-07
+
+diff --git a/src/java/com/opensymphony/sitemesh/compatability/Content2HTMLPage.java b/src/java/com/opensymphony/sitemesh/compatability/Content2HTMLPage.java
+index e4015d5..ee3ee18 100644
+--- a/src/java/com/opensymphony/sitemesh/compatability/Content2HTMLPage.java
++++ b/src/java/com/opensymphony/sitemesh/compatability/Content2HTMLPage.java
+@@ -21,6 +21,10 @@ public class Content2HTMLPage implements HTMLPage {
+     private final Content content;
+     private HttpServletRequest request;
+ 
++    public Content2HTMLPage(Content content) {
++        this.content = content;
++    }
++
+     public Content2HTMLPage(Content content, HttpServletRequest request) {
+         this.content = content;
+         this.request = request;

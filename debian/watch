@@ -1,0 +1,5 @@
+version=3
+opts=dversionmangle=s/\+dfsg// \
+http://www.opensymphony.com/sitemesh/download.action \
+ https://sitemesh.dev.java.net/files/documents/887/.+/sitemesh-(.+).zip \
+ debian debian/orig-tar.sh

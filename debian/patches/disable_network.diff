@@ -1,0 +1,23 @@
+Description: Disable network access during javadoc generation
+Author: Miguel Landaeta <miguel@miguel.cc>
+Forwarded: no
+Last-Update: 2011-05-07
+
+diff --git a/build.xml b/build.xml
+index fb28188..3289747 100644
+--- a/build.xml
++++ b/build.xml
+@@ -90,11 +90,13 @@
+             doctitle="${Name} ${version} API"
+             footer="&lt;a href=&quot;http://www.opensymphony.com/sitemesh/&quot;&gt;www.opensymphony.com/sitemesh/&lt;/a&gt;">
+ 
++            <!-- disable network access during build time
+             <link href="http://java.sun.com/j2se/1.4.2/docs/api/"/>
+             <link href="http://java.sun.com/products/servlet/2.3/javadoc/"/>
+             <link href="http://jakarta.apache.org/velocity/api/"/>
+             <link href="http://jakarta.apache.org/velocity/tools/javadoc/"/>
+             <link href="http://freemarker.sourceforge.net/docs/api/"/>
++            -->
+         </javadoc>
+     </target>
+ 
