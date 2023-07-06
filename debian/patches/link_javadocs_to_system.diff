@@ -1,0 +1,16 @@
+Description: Link javadocs to system javadoc
+Author: Miguel Landaeta <miguel@miguel.cc>
+Forwarded: no
+Last-Update: 2011-05-07
+
+--- sitemesh-2.4.1+dfsg.orig/build.xml
++++ sitemesh-2.4.1+dfsg/build.xml
+@@ -97,6 +97,8 @@
+             <link href="http://jakarta.apache.org/velocity/tools/javadoc/"/>
+             <link href="http://freemarker.sourceforge.net/docs/api/"/>
+             -->
++            <!-- link to system javadoc -->
++            <link href="file:///usr/share/doc/default-jdk-doc/api/" />
+         </javadoc>
+     </target>
+ 

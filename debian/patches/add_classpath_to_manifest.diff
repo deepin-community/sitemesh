@@ -1,0 +1,22 @@
+Description: Add classpath to sitemesh jar
+Author: Miguel Landaeta <miguel@miguel.cc>
+Forwarded: no
+Last-Update: 2011-05-07
+
+diff --git a/build.xml b/build.xml
+index fb28188..f6bd4fb 100644
+--- a/build.xml
++++ b/build.xml
+@@ -118,8 +118,11 @@
+         <copy todir="build/classes">
+              <fileset dir="src/java" excludes="**/*.java,**/*.flex"/>
+         </copy>
+-        <jar jarfile="dist/${name}-${version}.jar" basedir="build/classes" excludes="**/servlets/**">
++        <jar jarfile="dist/${name}.jar" basedir="build/classes" excludes="**/servlets/**">
+             <metainf dir="src/etc/tld/jsp1.2" includes="*.tld"/>
++            <manifest>
++                <attribute name="Class-Path" value="servlet-api-2.5.jar jsp-api-2.1.jar velocity-tools-view.jar freemarker.jar velocity.jar"/>
++            </manifest>
+         </jar>
+     </target>
+ 

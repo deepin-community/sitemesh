@@ -1,4 +1,18 @@
 #!/usr/bin/make -f
 
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
+
 %:
-	dh $@
+	dh $@ --with javahelper
+
+override_dh_auto_build:
+	# this file was dropped by accident from the orig source tarball
+	cp debian/api.css docs/api.css
+	ant jar docs blank example
+
+override_dh_auto_test:
+	ant test
+
+override_dh_auto_clean:
+	ant clean
+	rm -f docs/api.css

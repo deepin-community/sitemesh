@@ -1,0 +1,92 @@
+Description: Compatibility with Velocity Tools 2.0
+Author: Miguel Landaeta <miguel@miguel.cc>
+Bug-Debian: http://bugs.debian.org/625764
+Forwarded: no
+Last-Update: 2011-05-06
+
+--- sitemesh-2.4.1+dfsg.orig/src/java/com/opensymphony/module/sitemesh/velocity/VelocityDecoratorServlet.java
++++ sitemesh-2.4.1+dfsg/src/java/com/opensymphony/module/sitemesh/velocity/VelocityDecoratorServlet.java
+@@ -19,6 +19,7 @@ import org.apache.velocity.tools.view.se
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;
+ import java.io.StringWriter;
++import java.io.IOException;
+ 
+ /**
+  * Servlet that allows Velocity templates to be used as decorators.
+@@ -27,7 +28,7 @@ import java.io.StringWriter;
+  * @version $Revision: 1.9 $
+  */
+ public class VelocityDecoratorServlet extends VelocityViewServlet {
+-    public Template handleRequest(HttpServletRequest request, HttpServletResponse response, Context context) throws Exception {
++    public Template handleRequest(HttpServletRequest request, HttpServletResponse response, Context context) {
+         HTMLPage htmlPage = (HTMLPage) request.getAttribute(RequestConstants.PAGE);
+         String template;
+ 
+@@ -48,13 +49,21 @@ public class VelocityDecoratorServlet ex
+             context.put("title", OutputConverter.convert(htmlPage.getTitle()));
+             {
+                 StringWriter buffer = new StringWriter();
+-                htmlPage.writeBody(OutputConverter.getWriter(buffer));
+-                context.put("body", buffer.toString());
++                try {
++                    htmlPage.writeBody(OutputConverter.getWriter(buffer));
++                    context.put("body", buffer.toString());
++                } catch (IOException e) {
++                    context.put("body", "<p>Body?</p>");
++                }
+             }
+             {
+                 StringWriter buffer = new StringWriter();
+-                htmlPage.writeHead(OutputConverter.getWriter(buffer));
+-                context.put("head", buffer.toString());
++                try {
++                    htmlPage.writeHead(OutputConverter.getWriter(buffer));
++                    context.put("head", buffer.toString());
++                } catch (IOException e) {
++                    context.put("head", "<!-- head -->");
++                }
+             }
+             context.put("page", htmlPage);
+             DecoratorMapper decoratorMapper = getDecoratorMapper();
+@@ -70,4 +79,4 @@ public class VelocityDecoratorServlet ex
+         DecoratorMapper decoratorMapper = factory.getDecoratorMapper();
+         return decoratorMapper;
+     }
+-}
+\ No newline at end of file
++}
+--- sitemesh-2.4.1+dfsg.orig/src/java/com/opensymphony/module/sitemesh/util/OutputConverter.java
++++ sitemesh-2.4.1+dfsg/src/java/com/opensymphony/module/sitemesh/util/OutputConverter.java
+@@ -18,14 +18,21 @@ public class OutputConverter
+ 
+     public static Writer getWriter(Writer out)
+     {
++        /* resin 2.1.12 was released at least 8 years ago...
++         * I guess it is safe to disable this work around
+         if ("true".equalsIgnoreCase(System.getProperty(WORK_AROUND_RESIN_I18N_BUG)))
+             return new ResinWriter(out);
+         else
+             return out;
++        */
++        return out;
+     }
+ 
+-    public static String convert(String inputString) throws IOException
++    // public static String convert(String inputString) throws IOException
++    public static String convert(String inputString)
+     {
++        /* resin 2.1.12 was released at least 8 years ago...
++         * I guess it is safe to disable this work around
+         if ("true".equalsIgnoreCase(System.getProperty(WORK_AROUND_RESIN_I18N_BUG)))
+         {
+             StringWriter sr = new StringWriter();
+@@ -34,6 +41,8 @@ public class OutputConverter
+         }
+         else
+             return inputString;
++        */
++        return inputString;
+     }
+ 
+     /**

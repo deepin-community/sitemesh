@@ -1,0 +1,25 @@
+Description: Exclude Tapestry features
+Author: Miguel Landaeta <miguel@miguel.cc>
+Forwarded: no
+Last-Update: 2011-05-07
+
+diff --git a/build.xml b/build.xml
+index fb28188..5b91afd 100644
+--- a/build.xml
++++ b/build.xml
+@@ -49,6 +49,7 @@
+             >
+             <src path="src/java"/>
+             <src path="build/java"/>
++            <exclude name="com/opensymphony/module/sitemesh/tapestry/*"/>
+         </javac>
+     </target>
+ 
+@@ -81,6 +82,7 @@
+             destdir="dist/docs/api"
+             stylesheetfile="docs/api.css"
+             packagenames="com.opensymphony.*"
++            excludepackagenames="com.opensymphony.module.sitemesh.tapestry.*"
+             classpathref="cp"
+             author="true"
+             version="true"

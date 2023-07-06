@@ -1,0 +1,18 @@
+---------------------------
+libsitemesh-java for Debian
+---------------------------
+
+
+*** Removal of functionalities ***
+
+Sitemesh Debian package doesn't contains some of the functionalities of
+upstream binary releases.
+
+Here is a list of excluded files regarding original content of SiteMesh.
+
+* tapestry
+  [not-in-debian] Tapestry framework
+    com/opensymphony/module/sitemesh/tapestry/**
+
+
+ -- Miguel Landaeta <miguel@miguel.cc>  Fri, 19 Feb 2010 19:54:11 -0430
